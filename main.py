@@ -23,7 +23,6 @@ def ask_ai(prompt: str) -> str:
     """
 
     api_key = os.getenv("OPENROUTER_API_KEY")
-    "meta-llama/llama-3-8b-instruct"
     model = os.getenv("MODEL_NAME")
 
     if not api_key:
