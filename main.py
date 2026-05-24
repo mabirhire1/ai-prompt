@@ -68,6 +68,15 @@ def ask_ai(prompt: str) -> str:
 
     data = response.json()
 
+       # ── Check for API error responses ──
+    if "error" in data:
+        raise ConnectionError(f"API error: {data['error']}")
+
+    if "choices" not in data:
+        raise ConnectionError(
+            f"Unexpected API response format. Response: {data}"
+        )
+
     ai_response = data["choices"][0]["message"]["content"]
 
     return ai_response
